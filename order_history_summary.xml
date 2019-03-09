@@ -22,11 +22,11 @@
 					// Hole alle Infos nach Bestellungs ID
 					$orderx 	= new ctrl_order($order['id']);
 					$items 		= (isset($orderx->data['items'])) ? $orderx->data['items'] : [];
-					$tracking_id 	= (isset($orderx->data['shipping_tracking_id'])) ? $orderx->data['shipping_tracking_id'] : '';
+					$tracking_id  = (isset($orderx->data['shipping_tracking_id'])) ? $orderx->data['shipping_tracking_id'] : '';
 					$order_totals = array_slice($orderx->data['order_total'], 1);// Hole alles außer Zwischensumme (1.)
 
-					//echo "<pre>" . print_r($order_totals, true) . "</pre>";
-					//exit;
+//					echo "<pre>" . print_r($orderx, true) . "</pre>";
+//					exit;
 					
 					//Preset Vars
 					$payment_fee = 0;
@@ -144,13 +144,13 @@
 						#finalArticleOHistory1 td:nth-last-child(2),
 						#finalArticleOHistory2 td:nth-last-child(2) {
 							border-right: 1px solid black;
-						}
-						
-						#finalArticleOHistory1 td:nth-last-child(2),
-						#finalArticleOHistory2 td:nth-last-child(2),
-						#finalArticleOHistory2 td:first-of-type {
 							text-align: right;
 						}
+						
+						#finalArticleOHistory2 td:first-of-type {
+							text-align: center;
+						}
+						
 					
 					</style>
 				]]>
@@ -245,7 +245,7 @@
 										</tr>
 										<?php } ?>
 										<tr id="finalArticleOHistory2">
-											<td colspan="3"><?php if (isset($orders['tracking_id'])) echo "Shipping Tracking ID " . $orders['tracking_id'];?></td>
+											<td colspan="3"><?php if (isset($order['tracking_id']) && $order['tracking_id'] != '') echo language::translate('title_shipping_tracking_id', 'Shipping Tracking ID') . ": " . $order['tracking_id'];?></td>
 											<td><?php echo language::translate('title_subtotal', 'Subtotal');?></td>
 											<td><?php echo currency::format(($sum + $fees)); ?></td>
 										</tr>
