@@ -3,7 +3,7 @@ Order History Summary for litecart
 
 ## Instructions ##
 
-(!) 1. Always backup data before making changes to your store.  
+    1. Always backup data before making changes to your store. (!)
     2. Copy the inside of the *public_html/*
     3. Go to your *litecart's* document root (in your directory)    
     4. Paste it into there
